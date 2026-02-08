@@ -1,4 +1,5 @@
-package com.example.sportsclubapi;
+package com.example.sportclub;
+
 
 
 import org.springframework.stereotype.Repository;
@@ -37,6 +38,37 @@ public class PlayerRepository {
         }
 
         return players;
+    }
+    public boolean update(int id, Player player) {
+        try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement ps =
+                     con.prepareStatement(
+                             "UPDATE player SET name = ?, age = ? WHERE id = ?"
+                     )) {
+
+            ps.setString(1, player.getName());
+            ps.setInt(2, player.getAge());
+            ps.setInt(3, id);
+
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to update player");
+        }
+    }
+    public boolean delete(int id) {
+        try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement ps =
+                     con.prepareStatement(
+                             "DELETE FROM player WHERE id = ?"
+                     )) {
+
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to delete player");
+        }
     }
 
     public void save(Player player) {

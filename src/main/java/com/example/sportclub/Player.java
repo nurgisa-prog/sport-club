@@ -1,26 +1,27 @@
-package com.example.sportsclubapi;
-
+package com.example.sportclub;
 
 public class Player {
 
-    private int id;
+    private Integer id;
     private String name;
-    private int age;
+    private Integer age;
+
 
     public Player() {
     }
 
-    public Player(int id, String name, int age) {
+    public Player(Integer id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -36,7 +37,7 @@ public class Player {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 }

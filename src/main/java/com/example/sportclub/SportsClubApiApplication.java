@@ -1,4 +1,4 @@
-package com.example.sportsclubapi;
+package com.example.sportclub;
 
 
 import org.springframework.boot.SpringApplication;
